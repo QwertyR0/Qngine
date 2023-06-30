@@ -47,7 +47,7 @@ export function loop(w, dt, pl){
 }
 
 export function draw(w, graphics){
-    graphics.text("Hello World!", 0, 0, { color: "white" });
+    graphics.text("Hello World!", w.width/2, w.height/2, { color: "white" });
 }
 ```
 
