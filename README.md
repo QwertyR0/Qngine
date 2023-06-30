@@ -46,8 +46,8 @@ export async function init(w, pl){
 export function loop(w, dt, pl){
 }
 
-export function draw(graphics){
-    graphics.text("Hello World!", 0, 0);
+export function draw(w, graphics){
+    graphics.text("Hello World!", 0, 0, { color: "white" });
 }
 ```
 
