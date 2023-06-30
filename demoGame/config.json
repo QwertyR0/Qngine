@@ -1,0 +1,9 @@
+{
+    "title": "Demo Game",
+    "gameFile": "./main.js",
+    "width": 560,
+    "height": 480,
+    "imageSmoothing": false,
+    "enableWhiteByDefault": true,
+    "borderless": false
+}
