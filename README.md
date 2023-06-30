@@ -19,7 +19,7 @@
 git clone https://github.com/QwertyR0/Qngine.git Qngine
 ```
 
-and in the file **Qngine** run this command to download the dependencies:
+and in the folder **Qngine** run this command to download the dependencies:
 ```bash
 npm i
 ```
