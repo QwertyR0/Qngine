@@ -56,7 +56,7 @@ export async function init(w, pl){
 export function loop(w, dt, pl){
 }
 
-export function draw(graphics){
+export function draw(w, graphics){
     graphics.text("Hello World!", 0, 0);
 }
 ```
