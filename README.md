@@ -10,7 +10,7 @@
 </div>
 
 <div id="start">
-
+![GitHub repo size](https://img.shields.io/github/repo-size/:QwertyR0/:Qngine)
 ## **🎁Getting Started:**
 **Qngine** is a simple Game Engine i built for Javascript. It is highly inspired from [**LÖVE**](https://love2d.org/). It's also my first game engine.
 ### **Installing:**
