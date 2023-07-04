@@ -6,7 +6,7 @@
 
 <div align="center">
 
-[Getting Started](#start) | [Documentation](https://github.com/QwertyR0/Qngine/blob/main/docs.md) | [Help](#help)
+[Getting Started](#start) | [Documentation](#docs) | [Help](#help)
 </div>
 
 <div id="start">
@@ -93,7 +93,8 @@ Qngine is still in development and you should expect bugs(like a lot).
 
 ### **Documentation:**
 
-Click [here](https://github.com/QwertyR0/Qngine/blob/main/docs.md) for the documentation file.
+Click [here](https://github.com/QwertyR0/Qngine/wiki) for the wiki.
+Beaware that only %30 of the wiki is done.
 
 </div>
 
