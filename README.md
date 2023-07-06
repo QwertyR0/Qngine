@@ -12,7 +12,7 @@
 <div id="start">
         
 ## **🎁Getting Started:**
-**Qngine** is a simple Game Engine i built for Javascript. It is highly inspired from [**LÖVE**](https://love2d.org/). It's also my first game engine.
+**Qngine** is a simple Game Engine I built for Javascript. It is highly inspired from [**LÖVE**](https://love2d.org/). It's also my first game engine.
 ### **Installing:**
 Simply clone this repository with:
 ```
