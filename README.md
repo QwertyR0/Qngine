@@ -94,7 +94,7 @@ Qngine is still in development and you should expect bugs(like a lot).
 ### **Documentation:**
 
 Click [here](https://github.com/QwertyR0/Qngine/wiki) for the wiki.  
-Beaware that only %30 of the wiki is done.
+Beaware that only %38.6 of the wiki is done.
 
 </div>
 
