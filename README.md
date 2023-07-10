@@ -14,7 +14,7 @@
 ## **🎁Getting Started:**
 **Qngine** is a simple Game Engine i built for Javascript. It is highly inspired from [**LÖVE**](https://love2d.org/). It's also my first game engine.
 ### **Installing:**
-**1.** Simply clone this repository with:
+Simply clone this repository with:
 ```
 git clone https://github.com/QwertyR0/Qngine.git Qngine
 ```
@@ -23,10 +23,20 @@ and in the file **Qngine** run this command to download the dependencies:
 ```bash
 npm i
 ```
+</br>
 
-**2.** Create a game folder and also create a **config.json** and a **main.js**
+### **Running the Demo:**
+Simply run the command below:
+```bash
+node PATH_TO_THE_QNGINE_FOLDER/src/engine.js demoGame/
+```
+</br>
 
-**3.** Write this json below to your **config.json**
+### **Making The First Program:**
+
+**1.** Create a game folder and also create a **config.json** and a **main.js**
+
+**2.** Write this json below to your **config.json**
 ```json
 {
     "title": "TestGame",
@@ -37,7 +47,7 @@ npm i
 
 The **"title"** will be the window title of your game and the **"gameFile"** will the main gamefile you created as **main.js**.
 
-**4.** Write this Javascript code below to your **main.js**
+**3.** Write this Javascript code below to your **main.js**
 ```js
 
 export async function init(w, pl){
@@ -46,12 +56,12 @@ export async function init(w, pl){
 export function loop(w, dt, pl){
 }
 
-export function draw(graphics){
+export function draw(w, graphics){
     graphics.text("Hello World!", 0, 0);
 }
 ```
 
-**5.** Finally run it with the command:
+**4.** Finally run it with the command:
 ```bash
 node PATH_TO_THE_QNGINE_FOLDER/src/engine.js PATH_TO_THE_GAME_FOLDER
 ```
@@ -63,6 +73,20 @@ I only tested this on node v20.2.0
 
 Qngine is still in development and you should expect bugs(like a lot).
 
+</div>
+<br>
+
+<div align="center">
+
+## 👔**Maintainers:**
+>![QwertyR0](https://github.com/QwertyR0.png?size=80) &emsp;
+>![BlendiGoose](https://github.com/lieve-blendi.png?size=80)
+>---
+>&nbsp;&nbsp;&nbsp;&nbsp;**QwertyR0**&nbsp;
+>**Blendi Goose**
+>---
+>Repo Owner&emsp;&emsp;&emsp;&emsp;
+>Tester&emsp;
 </div>
 <br>
 <div id="docs">

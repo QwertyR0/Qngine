@@ -153,9 +153,9 @@ const plugin = {
                 this.physics = false;
             }
 
-            object.addForce = (axis, force, dt) => {
+            object.accelerate = (axis, dir, dt) => {
                 if(axis === "x"){
-                    if(force > 0){
+                    if(dir === "positive"){
                         if (object.velx < object.maxspeed){
                             if (object.velx + object.accel * dt < object.maxspeed){
                                 object.velx = object.velx + object.accel * dt
@@ -163,7 +163,7 @@ const plugin = {
                                 object.velx = object.maxspeed;
                             }    
                         }
-                    } else if(force < 0){
+                    } else if(dir === "negative"){
                         if (object.velx < object.maxspeed){
                             if (object.velx - object.accel * dt > -object.maxspeed){
                                 object.velx = object.velx - object.accel * dt
@@ -173,7 +173,7 @@ const plugin = {
                         }
                     }
                 } else if(axis === "y"){
-                    if(force > 0){
+                    if(dir === "positive"){
                         if (object.vely < object.maxspeed){
                             if (object.vely + object.accel * dt < object.maxspeed){
                                 object.vely = object.vely + object.accel * dt
@@ -181,7 +181,7 @@ const plugin = {
                                 object.vely = object.maxspeed;
                             }    
                         }
-                    } else if(force < 0){
+                    } else if(dir === "negative"){
                         if (object.vely < object.maxspeed){
                             if (object.vely - object.accel * dt > -object.maxspeed){
                                 object.vely = object.vely - object.accel * dt
@@ -191,8 +191,29 @@ const plugin = {
                         }
                     }
                 }
+
             };
-            
+
+            object.addForce = (axis, val) => {
+                if(axis === "x"){
+                    if (object.velx < object.maxspeed){
+                        if (object.velx + val < object.maxspeed){
+                            object.velx += val
+                        } else {
+                            object.velx = object.maxspeed;
+                        }    
+                    }
+                } else if(axis === "y") {
+                    if (object.vely < object.maxspeed){
+                        if (object.vely + val < object.maxspeed){
+                            object.vely += val
+                        } else {
+                            object.vely = object.maxspeed;
+                        }    
+                    }
+                }
+            };
+
             PhysicsObjects.push(object);
         },
 

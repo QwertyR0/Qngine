@@ -91,7 +91,7 @@ let w = {
 
 w.exit = function() {
     process.exit();
-};
+};  
 
 w.minimize = function(){
     window.minimize();
