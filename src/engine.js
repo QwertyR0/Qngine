@@ -444,14 +444,14 @@ class Animation {
     }
 
     stop(){
-        this.play = false;
+        this.isPlaying = false;
         this.currentFrameIndex = 0;
         this.elapsedTime = 0;
         this.cylceIndex = 0;
     }
 
     pause(){
-        this.play = false;
+        this.isPlaying = false;
     }
 
     update(dt){
