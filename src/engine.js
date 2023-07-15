@@ -231,8 +231,8 @@ w.loadImage = async function(imagePath){
         imagePath = path.join(process.cwd(), game.folder, imagePath);
     }
 
-    const dimensions = imageSize(imagePath) // maybe optimize here later
-    return { image: await loadImage(imagePath), width: dimensions.width, height: dimensions.height };
+    const imageOb = await loadImage(imagePath) // maybe optimize here later
+    return { image: imageOb, width: imageOb.width, height: imageOb.height };
 };
 
 const graphics = {
