@@ -109,3 +109,8 @@ My Discord: **qwerty.r0**
 My Website: **[https://qwertyr0.is-a.dev/](https://qwertyr0.is-a.dev/)**
 
 </div>
+
+### **Special Thanks to:**
+- **[kmamal](https://github.com/kmamal)** For making SDL bindings for node.js.
+- **[kTheLemon](https://github.com/kTheLemon)** For minorly testing Qngine.
+- **farukk9326** For making the icon.
