@@ -112,5 +112,6 @@ My Website: **[https://qwertyr0.is-a.dev/](https://qwertyr0.is-a.dev/)**
 
 ### **Special Thanks to:**
 - **[kmamal](https://github.com/kmamal)** For making SDL bindings for node.js.
+- **[Blendi Goose](https://github.com/lieve-blendi)** For minroly testing and helping with some issues .
 - **[kTheLemon](https://github.com/kTheLemon)** For minorly testing Qngine.
 - **farukk9326** For making the icon.
