@@ -75,23 +75,9 @@ Qngine is still in development and you should expect bugs(like a lot).
 
 </div>
 <br>
-
-<div align="center">
-
-## 👔**Maintainers:**
->![QwertyR0](https://github.com/QwertyR0.png?size=80) &emsp;
->![BlendiGoose](https://github.com/lieve-blendi.png?size=80)
->---
->&nbsp;&nbsp;&nbsp;&nbsp;**QwertyR0**&nbsp;
->**Blendi Goose**
->---
->Repo Owner&emsp;&emsp;&emsp;&emsp;
->Tester&emsp;
-</div>
-<br>
 <div id="docs">
 
-### **Documentation:**
+## **Documentation:**
 
 Click [here](https://github.com/QwertyR0/Qngine/wiki) for the wiki.  
 Beaware that only %38.6 of the wiki is done.
