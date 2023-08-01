@@ -822,7 +822,7 @@ async function render(){
 
     for (const gameObject of gameObjects) {
         if(gameObject.willRender){
-            await gameObject.render(w, graphics, pluginsObj.pl);
+            await gameObject.render.call(gameObject, w, graphics, pluginsObj.pl);
         }
     }
 
@@ -851,7 +851,7 @@ async function gameLoop(){
         });
 
         for (const gameObject of gameObjects) {
-            await gameObject.update(w, dt, pluginsObj.pl);
+            await gameObject.update.call(gameObject, w, dt, pluginsObj.pl);
         }
 
         animations.forEach((anim) => {

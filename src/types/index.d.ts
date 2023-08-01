@@ -18,7 +18,7 @@ interface io {
     isKeyUp(key: string): boolean
     isMouseDown(button: number): boolean
     isMouseUp(button: number): boolean
-    getMousePos(key: string): Sdl.Mouse.Module["position"] | {x: number, y: number} // return directly from @kmamal/sdl
+    getMousePos(): Sdl.Mouse.Module["position"] | {x: number, y: number} // return directly from @kmamal/sdl
     playSound(soundPath: string, volume: number): void
 }
 
@@ -88,7 +88,7 @@ export namespace Qngine {
         /**
          * loads an image
         */
-        loadImage(imagePath: string): ImageInstance
+        loadImage(imagePath: string): Promise<ImageInstance>
 
         /**
          * Creates a new Joystick Instance
