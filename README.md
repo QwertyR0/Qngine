@@ -12,14 +12,14 @@
 <div id="start">
         
 ## **🎁Getting Started:**
-**Qngine** is a simple Game Engine I built for Javascript. It is highly inspired from [**LÖVE**](https://love2d.org/). It's also my first game engine.
+**Qngine** is a very simple Game Engine I built for Javascript. It is highly inspired from [**LÖVE**](https://love2d.org/). It's also my first game engine.
 ### **Installing:**
 Simply clone this repository with:
 ```
 git clone https://github.com/QwertyR0/Qngine.git Qngine
 ```
 
-and in the file **Qngine** run this command to download the dependencies:
+and in the file **Qngine** run the command below to download the dependencies:
 ```bash
 npm i
 ```

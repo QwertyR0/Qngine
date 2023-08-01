@@ -13,7 +13,7 @@ ________  ________   ________  ___  ________   _______
                 •    LICENSE: MIT
                 •        2023
                 
-                •    Version: 1.0
+                •    Version: 1.0(.1)
 */
 
 import sdl from '@kmamal/sdl';
@@ -85,8 +85,6 @@ let w = {
     width: window.width,
     height: window.height,
     io: {}
-    //protagonistSoundEnabled: game.config.protagonistSoundEnabled ? game.config.protagonistSoundEnabled : false,
-    //protagonistSound: null
 };
 
 w.exit = function() {
@@ -255,7 +253,7 @@ const graphics = {
     },
 
     rectangle: function(type, fx, fy, nx, ny, color, options = {}){
-        options.widtha = options.widtha || 0;
+        options.borderWidth = options.borderWidth || 0;
         options.rotation = options.rotation || null;
 
         if(typeof options.rotation === typeof 1) ctx.save();
@@ -273,8 +271,8 @@ const graphics = {
             ctx.fillRect(fx, fy, nx, ny);
             ctx.restore();
         } else if(type === "border"){
-            if (options.widtha){
-                ctx.lineWidth = options.widtha;
+            if (options.borderWidth){
+                ctx.lineWidth = options.borderWidth;
             }
             if (color){
                 ctx.strokeStyle = color;
@@ -311,8 +309,8 @@ const graphics = {
     text: function(text, fx, fy, options) {
         let font = options && typeof options.font === "string" ? options.font : "Arial";
         let scale = options && typeof options.scale === "number" ? options.scale : 20;
-        let italic = options && options.italic ? "italic" : "normal";
-        let bold = options && options.bold ? "bold" : "normal";
+        let italic = options && options.italic ? "italic" : "";
+        let bold = options && options.bold ? "bold" : "";
         let align = options && typeof options.align === "string" ? options.align : "start";
         let color = options && typeof options.color === "string" ? options.color : (game.config.enableWhiteByDefault ? "white" : "black");
         let style = options && typeof options.style === "string" ? options.style : "fill";
@@ -369,15 +367,15 @@ export class SpriteSheet{
         this.totalSprites = totalSprites;
         this.currentFrame = 0;
         this.options = options;
-        this.flipY = false;
         this.flipX = false;
+        this.flipY = false;
     }
     
     setFrame(frameNum){
         if (frameNum >= 0 && frameNum < this.totalSprites) {
             this.currentFrame = frameNum;
         } else {
-            console.error('Invalid frame number');
+            throw new ReferenceError('Invalid frame number');
         }
     }
 
@@ -435,6 +433,7 @@ class Animation {
         this.animationCycle = anim;    
         this.isPlaying = false;
         this.cylceIndex = 0;
+        this.options = options
         this.options = this.options || {};;
         this.options.flipArray = typeof this.options.flipArray !== 'undefined' ? this.options.flipArray : [];
     }
