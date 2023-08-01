@@ -97,6 +97,8 @@ export namespace Qngine {
         */
 
         initJoystick(id: number, options?: JoystickEvents): Joystick | boolean
+
+        io: io
     }
 
     interface Graphics {
