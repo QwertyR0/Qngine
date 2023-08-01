@@ -88,7 +88,7 @@ export namespace Qngine {
         /**
          * loads an image
         */
-        loadImage(imagePath: string): ImageInstance
+        loadImage(imagePath: string): Promise<ImageInstance>
 
         /**
          * Creates a new Joystick Instance
