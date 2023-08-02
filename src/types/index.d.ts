@@ -205,6 +205,7 @@ export namespace Qngine {
         remove(): void
         hide(): void
         show(): void
+        static RemoveAll(): void
     }
 
     interface ImageInstance{

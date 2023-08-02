@@ -787,6 +787,10 @@ class GameObject {
     show(){
         this.willRender = true;
     }
+
+    static RemoveAll(){
+        gameObjects = [];
+    }
 }
 
 w.GameObject = GameObject;
