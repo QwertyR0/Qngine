@@ -196,9 +196,9 @@ export namespace Qngine {
             width: number,
             height: number,
             rot: number,
-            options: {
-                update: (w: Window, dt: number, pluginInterface: object) => void,
-                render: (w: Window, graphics: Graphics/* graphics */, pluginInterface: object /* graphics */ ) => void
+            options?: {
+                update?: (w: Window, dt: number, pluginInterface: object) => void,
+                render?: (w: Window, graphics: Graphics/* graphics */, pluginInterface: object /* graphics */ ) => void
             }
         )
         
