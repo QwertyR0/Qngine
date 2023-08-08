@@ -1,3 +1,5 @@
+// this ping pong demo is deterministic.
+
 let platform, ball, ballDir, score, playing;
 ballDir = 0;
 
