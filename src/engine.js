@@ -13,7 +13,7 @@ ________  ________   ________  ___  ________   _______
                 •    LICENSE: MIT
                 •        2023
                 
-                •    Version: 1.0(.1)
+                •    Version: 1.0(.2)
 */
 
 import sdl from '@kmamal/sdl';
@@ -24,10 +24,15 @@ import { setTimeout } from 'timers/promises';
 import imageSize from 'image-size'; //Probaly will find a better way
 import { loadImagea } from './ffmpeg.js';
 import playsound from "sound-play";
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 let game = {
     isPlaying: true
 };
+
 let pluginsObj = {
     plugins: new Map(),
     sharedVaribles: {},
@@ -36,11 +41,10 @@ let pluginsObj = {
     sharedVars: []
 };
 
-game.folder = process.argv[2];
-game.config = JSON.parse(fs.readFileSync(path.join(process.cwd(), game.folder, 'config.json'), 'utf8'));
-game.main = fs.readFileSync(path.join(process.cwd(), game.folder, game.config.gameFile));
+game.folder = getFullPath(process.argv[2]);
+game.config = JSON.parse(fs.readFileSync(path.join(game.folder, 'config.json'), 'utf8'));
 
-const main = await import("file://" + path.join(process.cwd(), game.folder, game.config.gameFile));
+const main = await import("file://" + path.join(game.folder, game.config.gameFile));
 
 const _w = (game.config.width ? game.config.width : undefined);
 const _h = (game.config.height ? game.config.height : undefined);
@@ -54,9 +58,9 @@ const ctx = canvas.getContext('2d');
 // WILL BE FIXED: doesn't being showed at the bar(down)  
 if(game.config.icon) {
     if(game.config.icon.startsWith("./") || game.config.icon.startsWith("../") || game.config.icon.startsWith("/")){
-        game.icon = path.join(process.cwd(), game.folder, game.config.icon);
+        game.icon = path.join(game.folder, game.config.icon);
     }
-
+    
     const iconDimensions = imageSize(game.icon);
     const icon = await loadImagea(game.icon, { width: iconDimensions.width, height: iconDimensions.height });
     window.setIcon(iconDimensions.width, iconDimensions.height, iconDimensions.width*3, 'rgb24', icon);
@@ -105,7 +109,7 @@ w.setBorderless = function(boole) {
 }
 
 w.borderless = game.config.borderless;
- 
+
 w.setPos = function(x, y){
     window.setPosition(x, y);
 }
@@ -143,7 +147,15 @@ const init = async (filePath) => {
 };
 
 const loadPlugins = async () => {
-    const pluginsDir = path.join(process.cwd(), './src/plugins/');
+    let pluginsDir = path.join(__dirname, 'plugins/');
+    if (game.config.pluginsDir){
+        if (game.config.pluginsDir.startsWith("./") || game.config.pluginsDir.startsWith("../") || game.config.pluginsDir.startsWith("/")){
+            pluginsDir = path.join(game.folder, game.config.pluginsDir);
+        } else {
+            pluginsDir = game.config.pluginsDir
+        }
+    }
+
     const pluginFiles = fs.readdirSync(pluginsDir);
 
     for (const file of pluginFiles) {
@@ -225,11 +237,7 @@ pluginsObj.kit.editSharedVar = function(id, val){
 // GRAPHICS:
 
 w.loadImage = async function(imagePath){
-    if(imagePath.startsWith("./") || imagePath.startsWith("../") || imagePath.startsWith("/")){
-        imagePath = path.join(process.cwd(), game.folder, imagePath);
-    }
-
-    const imageOb = await loadImage(imagePath) // maybe optimize here later
+    const imageOb = await loadImage(getFullPath(imagePath, true));
     return { image: imageOb, width: imageOb.width, height: imageOb.height };
 };
 
@@ -332,8 +340,7 @@ const graphics = {
         };
     },
 
-    image: function(image, fx, fy, options = {}) {
-         
+    image: function(image, fx, fy, options = {}) {  
         options = { ...{ scaleX: 1, scaleY: 1, flipX: false, flipY: false, rotation: 0 }, ...options };
         
         if (typeof options.scaleX !== 'number' || typeof options.scaleY !== 'number' || typeof options.flipX !== 'boolean' || typeof options.flipY !== 'boolean' || typeof options.rotation !== 'number') {
@@ -342,15 +349,17 @@ const graphics = {
       
         ctx.save();
         ctx.translate(fx + image.width * options.scaleX / 2, fy + image.height * options.scaleY / 2);
+        
         if (options.flipX) ctx.scale(-1, 1);
         if (options.flipY) ctx.scale(1, -1);
+
         ctx.rotate((options.rotation * Math.PI) / 180);
         ctx.drawImage(image.image, -image.width * options.scaleX / 2, -image.height * options.scaleY / 2, image.width * options.scaleX, image.height * options.scaleY);
         ctx.restore();
       
         if (game.config.enableWhiteByDefault) {
-          ctx.fillStyle = 'white';
-          ctx.strokeStyle = 'white';
+            ctx.fillStyle = 'white';
+            ctx.strokeStyle = 'white';
         }
     }      
 };
@@ -473,7 +482,7 @@ class Animation {
                     if(this.options.flipArray[this.cylceIndex] === 1){
                         this.SpriteSheet.flipY = true;
                     } else if(this.options.flipArray[this.cylceIndex] === 2){
-                        this.SpriteSheet.flipX = true
+                        this.SpriteSheet.flipX = true;
                     }
                 }
                 
@@ -749,9 +758,7 @@ function setupJosyticks(){
 w.initJoystick = initJoystick;
 
 w.io.playSound = function(soundPath, volume){
-    if(soundPath.startsWith("./") || soundPath.startsWith("../") || soundPath.startsWith("/")){
-        soundPath = path.join(process.cwd(), game.folder, soundPath);
-    }
+    soundPath = getFullPath(soundPath, true)
 
     playsound.play(soundPath, volume);
 }
@@ -802,6 +809,22 @@ pluginsObj.plugins.forEach(async (a) => {
         pluginsObj.pl[name] = fn;
     });
 });
+
+// HELPER FUNCTIONS:
+
+function getFullPath(inputPath, gameDir) {
+    if (path.isAbsolute(inputPath)) {
+        return inputPath;
+    } else {
+        if(!gameDir){
+            return path.join(process.cwd(), inputPath);
+        } else {
+            return path.join(game.folder, inputPath);
+        }
+    }
+}  
+
+// END OF HELPER FUNCTIONS
 
 //GAMELOOP:
 
