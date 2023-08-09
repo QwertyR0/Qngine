@@ -1,4 +1,7 @@
 // Version: 1.0
+// Note that, This plugin is quite unstable.
+// It's here to demonstrate the Qngine's plugin system, but I don't recommend using it for collisions since it's pretty limited.
+// You might want to check out other libraries or create your own collision system for your game.
 
 let PhysicsObjects = [];
 
