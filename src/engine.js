@@ -148,13 +148,6 @@ const init = async (filePath) => {
 
 const loadPlugins = async () => {
     let pluginsDir = path.join(__dirname, 'plugins/');
-    if (game.config.pluginsDir){
-        if (game.config.pluginsDir.startsWith("./") || game.config.pluginsDir.startsWith("../") || game.config.pluginsDir.startsWith("/")){
-            pluginsDir = path.join(game.folder, game.config.pluginsDir);
-        } else {
-            pluginsDir = game.config.pluginsDir
-        }
-    }
 
     const pluginFiles = fs.readdirSync(pluginsDir);
 
