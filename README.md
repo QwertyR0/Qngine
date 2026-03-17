@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://media.discordapp.net/attachments/1115350451014090885/1121833553089544282/q_3.png?width=400&height=100" alt>
+    <img src="https://github.com/QwertyR0/Qngine/blob/main/logo.png?raw=true" width="50%" alt>
     <br>
     <sub><b>✨A Tiny Javascript Game Engine</b></sub>
 </p>
